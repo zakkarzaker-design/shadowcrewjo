@@ -118,9 +118,11 @@
       max-width: 900px;
     }
 
+    /* 🔥 BLENDED LOGO */
     .hero-content img {
       max-width: 260px;
       margin-bottom: 25px;
+      filter: drop-shadow(0 0 30px rgba(255,0,0,0.35));
     }
 
     .hero-content h1 {
@@ -142,6 +144,11 @@
       text-decoration: none;
       border-radius: 40px;
       font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #b30000;
     }
 
     /* ===== WHATSAPP ===== */
@@ -200,7 +207,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <img src="logo.png" alt="Shadow Crew Logo">
+      <img src="logo-transparent.png" alt="Shadow Crew Logo">
       <h1>Shadow Crew JO</h1>
       <p>Cars • Bikes • Builds</p>
       <a href="#" class="btn">Join Us</a>
@@ -232,4 +239,3 @@
 
 </body>
 </html>
-
