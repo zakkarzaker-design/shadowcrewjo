@@ -80,12 +80,18 @@
       display: block;
       color: #fff;
       text-decoration: none;
-      margin: 12px 0;
+      margin: 10px 0;
       font-size: 17px;
     }
 
     .side-menu a:hover {
       color: #ff0000;
+    }
+
+    .sub-menu {
+      margin-left: 15px;
+      font-size: 15px;
+      opacity: 0.9;
     }
 
     /* ===== HERO ===== */
@@ -126,7 +132,7 @@
     }
 
     .hero-content p {
-      font-size: 18px;
+      font-size: 20px;
       opacity: 0.9;
       margin-bottom: 30px;
     }
@@ -146,7 +152,7 @@
       background: #b30000;
     }
 
-    /* ===== WHATSAPP BUTTON ===== */
+    /* ===== WHATSAPP ===== */
     .whatsapp {
       position: fixed;
       bottom: 20px;
@@ -195,19 +201,23 @@
   <div class="side-menu" id="menu">
     <h3>Menu</h3>
     <a href="#">Home</a>
+
     <a href="#">Members</a>
-    <a href="#">Cars</a>
-    <a href="#">Bikes</a>
-    <a href="#">Builds</a>
+    <div class="sub-menu">
+      <a href="#">Cars</a>
+      <a href="#">Bikes</a>
+      <a href="#">Builds</a>
+    </div>
+
     <a href="#">Contact Us</a>
   </div>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <img src="logo.png" alt="Shadow Crew Logo">
       <h1>Shadow Crew JO</h1>
-      <p>Cars • Bikes • Night Runs • Brotherhood</p>
+      <p>Cars • Bikes • Builds</p>
       <a href="#" class="btn">Join Us</a>
     </div>
   </section>
