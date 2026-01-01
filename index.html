@@ -74,7 +74,7 @@
       display: block;
       color: #fff;
       text-decoration: none;
-      margin: 12px 0;
+      margin: 14px 0;
       font-size: 18px;
       cursor: pointer;
     }
@@ -118,11 +118,30 @@
       max-width: 900px;
     }
 
-    /* 🔥 BLENDED LOGO */
+    /* 🔥 LOGO EYES EFFECT */
     .hero-content img {
       max-width: 260px;
       margin-bottom: 25px;
-      filter: drop-shadow(0 0 30px rgba(255,0,0,0.35));
+      animation: eyesGlow 4s infinite ease-in-out;
+    }
+
+    @keyframes eyesGlow {
+      0% {
+        filter: drop-shadow(0 0 0 rgba(255,0,0,0));
+        opacity: 0.85;
+      }
+      40% {
+        filter: drop-shadow(0 0 35px rgba(255,0,0,0.45));
+        opacity: 1;
+      }
+      60% {
+        filter: drop-shadow(0 0 35px rgba(255,0,0,0.45));
+        opacity: 1;
+      }
+      100% {
+        filter: drop-shadow(0 0 0 rgba(255,0,0,0));
+        opacity: 0.85;
+      }
     }
 
     .hero-content h1 {
@@ -195,17 +214,20 @@
 
   <!-- SIDE MENU -->
   <div class="side-menu" id="menu">
-    <a onclick="toggleMembers()">Members ▾</a>
+    <a href="#" onclick="goHome()">Home</a>
 
+    <a onclick="toggleMembers()">Members ▾</a>
     <div class="submenu" id="membersMenu">
       <a href="#">Cars</a>
       <a href="#">Bikes</a>
       <a href="#">Builds</a>
     </div>
+
+    <a href="https://wa.me/962XXXXXXXXX" target="_blank">Contact Us</a>
   </div>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="hero-content">
       <img src="logo-transparent.png" alt="Shadow Crew Logo">
       <h1>Shadow Crew JO</h1>
@@ -234,6 +256,11 @@
       const submenu = document.getElementById("membersMenu");
       submenu.style.display =
         submenu.style.display === "block" ? "none" : "block";
+    }
+
+    function goHome() {
+      document.getElementById("menu").classList.remove("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   </script>
 
