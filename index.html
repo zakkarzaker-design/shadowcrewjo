@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Shadow Crew</title>
+  <title>Shadow Crew JO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- GOOGLE FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -22,7 +22,7 @@
       overflow-x: hidden;
     }
 
-    /* ================= HEADER ================= */
+    /* ===== HEADER ===== */
     header {
       position: fixed;
       top: 0;
@@ -33,55 +33,62 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 20px;
-      background: rgba(0,0,0,0.7);
-      z-index: 999;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
     }
 
     .menu-btn {
       font-size: 28px;
       cursor: pointer;
+      user-select: none;
     }
 
-    .logo {
+    .top-logo {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .logo img {
-      height: 40px;
+    .top-logo img {
+      height: 38px;
     }
 
-    /* ================= SIDE MENU ================= */
+    /* ===== SIDE MENU ===== */
     .side-menu {
       position: fixed;
       top: 70px;
       left: -260px;
       width: 260px;
       height: calc(100% - 70px);
-      background: #050505;
+      background: #070707;
       padding: 20px;
-      transition: 0.3s;
-      z-index: 300;
+      transition: 0.3s ease;
+      z-index: 900;
     }
 
     .side-menu.active {
       left: 0;
     }
 
+    .side-menu h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      opacity: 0.8;
+    }
+
     .side-menu a {
       display: block;
       color: #fff;
       text-decoration: none;
-      margin: 15px 0;
-      font-size: 18px;
+      margin: 12px 0;
+      font-size: 17px;
     }
 
     .side-menu a:hover {
-      color: red;
+      color: #ff0000;
     }
 
-    /* ================= HERO ================= */
+    /* ===== HERO ===== */
     .hero {
       height: 100vh;
       background: url("hero.jpg") center/cover no-repeat;
@@ -89,80 +96,84 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 20px;
+      position: relative;
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.65);
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 800px;
+      padding: 20px;
+      max-width: 900px;
     }
 
     .hero-content img {
-      max-width: 250px;
-      margin-bottom: 20px;
+      max-width: 260px;
+      margin-bottom: 25px;
     }
 
     .hero-content h1 {
-      font-size: 42px;
+      font-size: 46px;
+      font-weight: 700;
       margin-bottom: 15px;
+      letter-spacing: 1px;
     }
 
     .hero-content p {
       font-size: 18px;
       opacity: 0.9;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
     .btn {
-      padding: 12px 28px;
-      background: red;
+      display: inline-block;
+      padding: 14px 34px;
+      background: #ff0000;
       color: #fff;
       text-decoration: none;
-      border-radius: 30px;
+      border-radius: 40px;
       font-weight: 600;
       transition: 0.3s;
     }
 
     .btn:hover {
-      background: darkred;
+      background: #b30000;
     }
 
-    /* ================= WHATSAPP ================= */
+    /* ===== WHATSAPP BUTTON ===== */
     .whatsapp {
       position: fixed;
       bottom: 20px;
       right: 20px;
       background: #25D366;
       color: #fff;
-      padding: 14px 18px;
+      padding: 14px 20px;
       border-radius: 50px;
-      font-weight: bold;
+      font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-      z-index: 999;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      z-index: 1000;
     }
 
-    /* ================= FOOTER ================= */
+    /* ===== FOOTER ===== */
     footer {
+      background: #070707;
       text-align: center;
       padding: 20px;
-      background: #050505;
       font-size: 14px;
       opacity: 0.7;
     }
 
-    /* ================= RESPONSIVE ================= */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
       .hero-content h1 {
-        font-size: 30px;
+        font-size: 32px;
       }
     }
   </style>
@@ -174,27 +185,29 @@
   <header>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-    <div class="logo">
+    <div class="top-logo">
       <img src="logo.png" alt="Shadow Crew Logo">
-      <span>Shadow Crew</span>
+      <strong>Shadow Crew</strong>
     </div>
   </header>
 
   <!-- SIDE MENU -->
   <div class="side-menu" id="menu">
+    <h3>Menu</h3>
     <a href="#">Home</a>
-    <a href="#">About Us</a>
-    <a href="#">Join Us</a>
-    <a href="#">Gallery</a>
-    <a href="#">Contact</a>
+    <a href="#">Members</a>
+    <a href="#">Cars</a>
+    <a href="#">Bikes</a>
+    <a href="#">Builds</a>
+    <a href="#">Contact Us</a>
   </div>
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-content">
-      <img src="logo.png" alt="Shadow Crew">
-      <h1>Powered by Adrenaline</h1>
-      <p>Cars • Bikes • Drift • Brotherhood</p>
+      <img src="logo.png" alt="Shadow Crew Logo">
+      <h1>Shadow Crew JO</h1>
+      <p>Cars • Bikes • Night Runs • Brotherhood</p>
       <a href="#" class="btn">Join Us</a>
     </div>
   </section>
@@ -206,7 +219,7 @@
 
   <!-- FOOTER -->
   <footer>
-    © 2026 Shadow Crew — All Rights Reserved
+    © 2026 Shadow Crew JO — All Rights Reserved
   </footer>
 
   <!-- SCRIPT -->
