@@ -36,6 +36,8 @@ header {
   align-items: center;
   gap: 15px;
   z-index: 10;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
 }
 
 /* HAMBURGER */
@@ -44,13 +46,13 @@ header {
   cursor: pointer;
 }
 
-/* LANGUAGE */
+/* LANGUAGE BUTTON */
 .lang-btn {
   margin-left: auto;
   background: none;
   border: 1px solid #c00;
   color: #fff;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 20px;
   cursor: pointer;
 }
@@ -75,7 +77,7 @@ header {
 .side-menu img {
   width: 120px;
   display: block;
-  margin: 0 auto 30px;
+  margin: 10px auto 30px;
 }
 
 .side-menu a {
@@ -100,44 +102,123 @@ header {
   font-size: 14px;
 }
 
-/* SECTIONS */
-section {
+/* MAIN CONTENT */
+main {
+  padding-top: 90px;
   position: relative;
   z-index: 2;
+}
+
+/* SECTIONS */
+section {
   padding: 120px 20px;
   text-align: center;
 }
 
 .hero h1 {
   font-size: 48px;
+  margin-bottom: 10px;
 }
 
 .hero span {
   color: #c00;
 }
 
-/* WHATSAPP */
+.hero p {
+  color: #aaa;
+}
+
+/* WHATSAPP BUTTON */
 .whatsapp-btn {
   display: inline-block;
   margin-top: 30px;
-  padding: 14px 34px;
+  padding: 16px 38px;
   background: #25D366;
   color: #000;
   font-weight: bold;
   border-radius: 30px;
   text-decoration: none;
+  font-size: 18px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- BACKGROUND LOGO -->
 <div class="bg-logo"></div>
 
+<!-- HEADER -->
 <header>
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
   <button class="lang-btn" onclick="toggleLang()">EN / AR</button>
 </header>
 
 <!-- SIDE MENU -->
-<div class="side-men
+<div class="side-menu" id="menu">
+  <img src="logo.png" alt="ShadowCrewJO Logo">
+
+  <a href="#" onclick="toggleMembers()">Members ▾</a>
+  <div class="submenu" id="membersMenu">
+    <a href="#cars">Cars</a>
+    <a href="#bikes">Bikes</a>
+    <a href="#builds">Builds</a>
+  </div>
+
+  <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 id="heroTitle">ShadowCrewJO</h1>
+    <p id="heroText">Cars & Bikes Night Crew</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 id="contactTitle">Contact Us</h2>
+    <a
+      class="whatsapp-btn"
+      href="https://wa.me/962XXXXXXXXX"
+      target="_blank"
+    >
+      WhatsApp Us
+    </a>
+  </section>
+
+</main>
+
+<script>
+let lang = "en";
+
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
+function toggleMembers() {
+  const m = document.getElementById("membersMenu");
+  m.style.display = m.style.display === "block" ? "none" : "block";
+}
+
+function toggleLang() {
+  if (lang === "en") {
+    document.getElementById("heroTitle").innerText = "شادو كرو الأردن";
+    document.getElementById("heroText").innerText = "فريق سيارات ودراجات ليلية";
+    document.getElementById("contactTitle").innerText = "تواصل معنا";
+    document.body.dir = "rtl";
+    lang = "ar";
+  } else {
+    document.getElementById("heroTitle").innerText = "ShadowCrewJO";
+    document.getElementById("heroText").innerText = "Cars & Bikes Night Crew";
+    document.getElementById("contactTitle").innerText = "Contact Us";
+    document.body.dir = "ltr";
+    lang = "en";
+  }
+}
+</script>
+
+</body>
+</html>
