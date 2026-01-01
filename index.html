@@ -43,14 +43,25 @@
       user-select: none;
     }
 
-    .top-logo {
+    .top-right {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
     }
 
-    .top-logo img {
-      height: 38px;
+    .lang-btn {
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .lang-btn:hover {
+      background: #ff0000;
+      border-color: #ff0000;
     }
 
     /* ===== SIDE MENU ===== */
@@ -102,6 +113,7 @@
       justify-content: center;
       text-align: center;
       position: relative;
+      overflow: hidden;
     }
 
     .hero::after {
@@ -109,20 +121,42 @@
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,0.65);
+      z-index: 1;
+    }
+
+    /* ===== SMOKE EFFECT ===== */
+    .smoke {
+      position: absolute;
+      bottom: -100px;
+      width: 200%;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+      animation: smokeMove 20s linear infinite;
+      z-index: 2;
+    }
+
+    @keyframes smokeMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       padding: 20px;
       max-width: 900px;
     }
 
-    /* 🔥 LOGO EYES EFFECT */
+    /* ===== LOGO ANIMATION ===== */
     .hero-content img {
       max-width: 260px;
       margin-bottom: 25px;
-      animation: eyesGlow 4s infinite ease-in-out;
+      animation: floatLogo 6s ease-in-out infinite, eyesGlow 4s infinite;
+    }
+
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
 
     @keyframes eyesGlow {
@@ -163,11 +197,6 @@
       text-decoration: none;
       border-radius: 40px;
       font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #b30000;
     }
 
     /* ===== WHATSAPP ===== */
@@ -191,12 +220,6 @@
       font-size: 14px;
       opacity: 0.7;
     }
-
-    @media (max-width: 600px) {
-      .hero-content h1 {
-        font-size: 32px;
-      }
-    }
   </style>
 </head>
 
@@ -206,33 +229,37 @@
   <header>
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-    <div class="top-logo">
-      <img src="logo-transparent.png" alt="Shadow Crew Logo">
-      <strong>Shadow Crew</strong>
+    <div class="top-right">
+      <button class="lang-btn" onclick="toggleLang()">AR</button>
     </div>
   </header>
 
   <!-- SIDE MENU -->
   <div class="side-menu" id="menu">
-    <a href="#" onclick="goHome()">Home</a>
+    <a onclick="goHome()" data-en="Home" data-ar="الرئيسية">Home</a>
 
-    <a onclick="toggleMembers()">Members ▾</a>
+    <a onclick="toggleMembers()" data-en="Members" data-ar="الأعضاء">Members ▾</a>
     <div class="submenu" id="membersMenu">
-      <a href="#">Cars</a>
-      <a href="#">Bikes</a>
-      <a href="#">Builds</a>
+      <a data-en="Cars" data-ar="سيارات">Cars</a>
+      <a data-en="Bikes" data-ar="دراجات">Bikes</a>
+      <a data-en="Builds" data-ar="تجهيزات">Builds</a>
     </div>
 
-    <a href="https://wa.me/962XXXXXXXXX" target="_blank">Contact Us</a>
+    <a href="https://wa.me/962XXXXXXXXX" target="_blank"
+       data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
   </div>
 
   <!-- HERO -->
   <section class="hero" id="home">
+    <div class="smoke"></div>
+
     <div class="hero-content">
       <img src="logo-transparent.png" alt="Shadow Crew Logo">
-      <h1>Shadow Crew JO</h1>
-      <p>Cars • Bikes • Builds</p>
-      <a href="#" class="btn">Join Us</a>
+      <h1 data-en="Shadow Crew JO" data-ar="شادو كرو الأردن">Shadow Crew JO</h1>
+      <p data-en="Cars • Bikes • Builds" data-ar="سيارات • دراجات • تجهيزات">
+        Cars • Bikes • Builds
+      </p>
+      <a href="#" class="btn" data-en="Join Us" data-ar="انضم إلينا">Join Us</a>
     </div>
   </section>
 
@@ -261,6 +288,16 @@
     function goHome() {
       document.getElementById("menu").classList.remove("active");
       window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    let currentLang = "en";
+    function toggleLang() {
+      currentLang = currentLang === "en" ? "ar" : "en";
+      document.documentElement.lang = currentLang;
+
+      document.querySelectorAll("[data-en]").forEach(el => {
+        el.textContent = el.getAttribute(`data-${currentLang}`);
+      });
     }
   </script>
 
