@@ -6,51 +6,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: #000;
   color: #fff;
   overflow-x: hidden;
 }
 
-/* BACKGROUND LOGO */
-.bg-logo {
-  position: fixed;
-  inset: 0;
-  background: url("logo.png") center no-repeat;
-  background-size: 60%;
-  opacity: 0.06;
-  z-index: 0;
-}
-
 /* HEADER */
 header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  padding: 16px 20px;
+  height: 70px;
   display: flex;
   align-items: center;
-  gap: 15px;
-  z-index: 10;
+  padding: 0 20px;
   background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(4px);
+  z-index: 100;
 }
 
-/* HAMBURGER */
 .menu-btn {
   font-size: 30px;
   cursor: pointer;
 }
 
-/* LANGUAGE BUTTON */
 .lang-btn {
   margin-left: auto;
-  background: none;
   border: 1px solid #c00;
+  background: none;
   color: #fff;
   padding: 6px 14px;
   border-radius: 20px;
@@ -67,12 +54,10 @@ header {
   background: #050505;
   padding: 20px;
   transition: 0.3s;
-  z-index: 20;
+  z-index: 200;
 }
 
-.side-menu.active {
-  left: 0;
-}
+.side-menu.active { left: 0; }
 
 .side-menu img {
   width: 120px;
@@ -82,73 +67,80 @@ header {
 
 .side-menu a {
   display: block;
-  padding: 12px 0;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  padding: 12px 0;
 }
 
-.side-menu a:hover {
-  color: #c00;
-}
+.side-menu a:hover { color: #c00; }
 
-/* SUBMENU */
-.submenu {
-  padding-left: 15px;
-  display: none;
-}
+.submenu { display: none; padding-left: 15px; }
 
-.submenu a {
-  font-size: 14px;
-}
-
-/* MAIN CONTENT */
-main {
-  padding-top: 90px;
-  position: relative;
-  z-index: 2;
-}
-
-/* SECTIONS */
-section {
-  padding: 120px 20px;
+/* HERO */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+    url("hero.jpg") center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 20px;
+}
+
+.hero-content img {
+  width: 180px;
+  margin-bottom: 20px;
 }
 
 .hero h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.hero span {
-  color: #c00;
+  font-size: 52px;
+  letter-spacing: 2px;
 }
 
 .hero p {
-  color: #aaa;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #ddd;
 }
 
-/* WHATSAPP BUTTON */
-.whatsapp-btn {
+.hero span { color: #c00; }
+
+/* BUTTON */
+.join-btn {
   display: inline-block;
   margin-top: 30px;
-  padding: 16px 38px;
-  background: #25D366;
-  color: #000;
+  padding: 16px 42px;
+  background: #c00;
+  color: #fff;
   font-weight: bold;
-  border-radius: 30px;
+  border-radius: 40px;
   text-decoration: none;
   font-size: 18px;
+  transition: 0.3s;
+}
+
+.join-btn:hover {
+  background: #ff0000;
+  transform: scale(1.05);
+}
+
+/* FADE ANIMATION */
+.fade-in {
+  animation: fade 1.5s ease forwards;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND LOGO -->
-<div class="bg-logo"></div>
-
-<!-- HEADER -->
 <header>
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
   <button class="lang-btn" onclick="toggleLang()">EN / AR</button>
@@ -156,40 +148,28 @@ section {
 
 <!-- SIDE MENU -->
 <div class="side-menu" id="menu">
-  <img src="logo.png" alt="ShadowCrewJO Logo">
-
+  <img src="logo.png" alt="ShadowCrewJO">
   <a href="#" onclick="toggleMembers()">Members ▾</a>
   <div class="submenu" id="membersMenu">
-    <a href="#cars">Cars</a>
-    <a href="#bikes">Bikes</a>
-    <a href="#builds">Builds</a>
+    <a href="#">Cars</a>
+    <a href="#">Bikes</a>
+    <a href="#">Builds</a>
   </div>
-
-  <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+  <a href="https://wa.me/962XXXXXXXXX" target="_blank">Contact Us</a>
 </div>
 
-<!-- MAIN -->
-<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content fade-in">
+    <img src="logo.png" alt="ShadowCrewJO Logo">
+    <h1>SHADOW<span>CREW</span>JO</h1>
+    <p id="heroText">Jordan’s Underground Cars & Bikes Crew</p>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1 id="heroTitle">ShadowCrewJO</h1>
-    <p id="heroText">Cars & Bikes Night Crew</p>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2 id="contactTitle">Contact Us</h2>
-    <a
-      class="whatsapp-btn"
-      href="https://wa.me/962XXXXXXXXX"
-      target="_blank"
-    >
-      WhatsApp Us
+    <a class="join-btn" href="https://wa.me/962XXXXXXXXX" target="_blank">
+      JOIN US
     </a>
-  </section>
-
-</main>
+  </div>
+</section>
 
 <script>
 let lang = "en";
@@ -205,15 +185,11 @@ function toggleMembers() {
 
 function toggleLang() {
   if (lang === "en") {
-    document.getElementById("heroTitle").innerText = "شادو كرو الأردن";
-    document.getElementById("heroText").innerText = "فريق سيارات ودراجات ليلية";
-    document.getElementById("contactTitle").innerText = "تواصل معنا";
+    document.getElementById("heroText").innerText = "فريق سيارات ودراجات ليلي في الأردن";
     document.body.dir = "rtl";
     lang = "ar";
   } else {
-    document.getElementById("heroTitle").innerText = "ShadowCrewJO";
-    document.getElementById("heroText").innerText = "Cars & Bikes Night Crew";
-    document.getElementById("contactTitle").innerText = "Contact Us";
+    document.getElementById("heroText").innerText = "Jordan’s Underground Cars & Bikes Crew";
     document.body.dir = "ltr";
     lang = "en";
   }
