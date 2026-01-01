@@ -1,130 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>ShadowCrewJO | Cars & Bikes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #000;
-      color: #fff;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      border-bottom: 2px solid #c00;
-    }
-    header h1 {
-      color: #c00;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-    nav a {
-      color: #fff;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #c00;
-    }
-    .hero {
-      text-align: center;
-      padding: 120px 20px;
-      background: linear-gradient(to bottom, #000, #111, #000);
-    }
-    .hero h2 {
-      font-size: 52px;
-      margin-bottom: 20px;
-    }
-    .hero span {
-      color: #c00;
-    }
-    .section {
-      padding: 80px 40px;
-      text-align: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .card {
-      background: #111;
-      padding: 20px;
-      border-radius: 12px;
-    }
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 16px 40px;
-      background: #c00;
-      color: #fff;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #777;
-      border-top: 1px solid #222;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>ShadowCrewJO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* BACKGROUND LOGO */
+.bg-logo {
+  position: fixed;
+  inset: 0;
+  background: url("logo.png") center no-repeat;
+  background-size: 60%;
+  opacity: 0.06;
+  z-index: 0;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 10;
+}
+
+/* HAMBURGER */
+.menu-btn {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* LANGUAGE */
+.lang-btn {
+  margin-left: auto;
+  background: none;
+  border: 1px solid #c00;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* SIDE MENU */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: #050505;
+  padding: 20px;
+  transition: 0.3s;
+  z-index: 20;
+}
+
+.side-menu.active {
+  left: 0;
+}
+
+.side-menu img {
+  width: 120px;
+  display: block;
+  margin: 0 auto 30px;
+}
+
+.side-menu a {
+  display: block;
+  padding: 12px 0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.side-menu a:hover {
+  color: #c00;
+}
+
+/* SUBMENU */
+.submenu {
+  padding-left: 15px;
+  display: none;
+}
+
+.submenu a {
+  font-size: 14px;
+}
+
+/* SECTIONS */
+section {
+  position: relative;
+  z-index: 2;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero span {
+  color: #c00;
+}
+
+/* WHATSAPP */
+.whatsapp-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 34px;
+  background: #25D366;
+  color: #000;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+}
+</style>
 </head>
+
 <body>
 
+<div class="bg-logo"></div>
+
 <header>
-  <h1>SHADOWCREWJO</h1>
-  <nav>
-    <a href="#cars">Cars</a>
-    <a href="#owners">Owners</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <button class="lang-btn" onclick="toggleLang()">EN / AR</button>
 </header>
 
-<section class="hero">
-  <h2>Cars. Bikes. <span>ShadowCrewJO</span></h2>
-  <p>Jordan’s bold car & bike crew</p>
-</section>
-
-<section id="cars" class="section">
-  <h2>Our Cars & Bikes</h2>
-  <div class="grid">
-    <div class="card">Your Car Image</div>
-    <div class="card">Your Bike Image</div>
-    <div class="card">Your Build</div>
-  </div>
-</section>
-
-<section id="owners" class="section">
-  <h2>Car Owners</h2>
-  <div class="grid">
-    <div class="card">Owner Name</div>
-    <div class="card">Owner Name</div>
-    <div class="card">Owner Name</div>
-  </div>
-</section>
-
-<section id="contact" class="section">
-  <h2>Contact ShadowCrewJO</h2>
-  <a class="btn" href="mailto:shadowcrewjo@gmail.com">Email Us</a>
-</section>
-
-<footer>
-  © 2026 ShadowCrewJO
-</footer>
-
-</body>
-</html>
-
-
+<!-- SIDE MENU -->
+<div class="side-men
